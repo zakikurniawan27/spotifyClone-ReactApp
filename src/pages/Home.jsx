@@ -5,12 +5,10 @@ import MainContent from "../components/content/MainContent"
 
 const Home = ({token, setToken, tokenLocalStorage}) =>{
 
-    const Token = window.localStorage.getItem("token")
-
     return(
         <>
         <div className="bg-black h-screen">
-            {!Token ? 
+            {!token ? 
             <div className="grid grid-rows-1 px-2 pt-20">
                 <MainContent token={token} setToken={setToken} tokenLocalStorage={tokenLocalStorage} />
             </div> 

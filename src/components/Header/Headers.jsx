@@ -5,7 +5,7 @@ import axios from 'axios'
 const Headers = ({token, setToken, tokenLocalStorage}) =>{
 
     const [me, setMe] = useState('')
-
+    const [dropDown, setDropDown] = useState(false)
     
 
     useEffect(()=>{
@@ -34,13 +34,39 @@ const Headers = ({token, setToken, tokenLocalStorage}) =>{
         localStorage.removeItem("token")
         setToken('')
     }
+    
+    const comDropDownOn = () => {
+        setDropDown(true)
+    }
+    const comDropDownOff = () => {
+        setDropDown(false)
+    }
 
     return (
-        <div className="relative mt-2 flex justify-end mx-5">
+        <div className="mt-2 flex justify-end mx-5">
             {!token ? 
             <ButtonLogin token={token} setToken={setToken} tokenLocalStorage={tokenLocalStorage} />
             :
-            <p className="text-white" onClick={()=> logOut()}>{me?.data?.display_name}</p> 
+            <>
+                {dropDown === false ? 
+                <div className="w-40 h-7 bg-white rounded-md text-lg text-center text-green-600 font-bold cursor-pointer" onClick={()=> comDropDownOn()}>
+                   {me?.data?.display_name}
+                </div>
+                :
+                <>
+                <div className="w-40 h-7 bg-white rounded-md rounded-b-none text-lg text-center text-green-600 font-bold cursor-pointer" onClick={()=> comDropDownOff()}>
+                    {me?.data?.display_name}
+                </div>
+                <div className="absolute top-11">
+                    <div className="w-40 h-7 bg-white rounded-md rounded-t-none text-base text-center cursor-pointer" onClick={()=> logOut()}>
+                        <p className="text-slate-600">
+                            logOut
+                        </p>
+                    </div>
+                </div>
+                </>
+                }
+            </> 
             }
         </div>
     )
