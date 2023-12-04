@@ -13,7 +13,7 @@ const Headers = ({token, setToken, tokenLocalStorage}) =>{
             if(token){
                 try {
                     const result = await axios.get(
-                        `https://api.spotify.com/v1/me`,{
+                        `${process.env.REACT_APP_ME_API}`,{
                             headers:{
                                 Authorization: `Bearer ${token}`
                             }
@@ -30,8 +30,7 @@ const Headers = ({token, setToken, tokenLocalStorage}) =>{
         })()
     },[token])
 
-    console.log(me)
-    const logout = () =>{
+    const logOut = () =>{
         localStorage.removeItem("token")
         setToken('')
     }
@@ -41,7 +40,7 @@ const Headers = ({token, setToken, tokenLocalStorage}) =>{
             {!token ? 
             <ButtonLogin token={token} setToken={setToken} tokenLocalStorage={tokenLocalStorage} />
             :
-            <p className="text-white" onClick={()=> logout()}>{me?.data?.display_name}</p> 
+            <p className="text-white" onClick={()=> logOut()}>{me?.data?.display_name}</p> 
             }
         </div>
     )
