@@ -1,34 +1,18 @@
 import { useEffect, useState } from "react"
 import ButtonLogin from "../button/ButtonLogin"
-import axios from 'axios'
 
-const Headers = ({token, setToken, tokenLocalStorage}) =>{
+import { useDispatch, useSelector } from "react-redux"
+import { me } from "../../redux/Action/authActions"
 
-    const [me, setMe] = useState('')
+const Headers = ({setToken, tokenLocalStorage}) =>{
+
     const [dropDown, setDropDown] = useState(false)
-    
+    const { token, user } = useSelector((state) => state.auth)
+    const dispatch = useDispatch()
 
     useEffect(()=>{
-        (async() =>{
-            if(token){
-                try {
-                    const result = await axios.get(
-                        `${process.env.REACT_APP_ME_API}`,{
-                            headers:{
-                                Authorization: `Bearer ${token}`
-                            }
-                        }
-                    )
-                    setMe(result) 
-                } catch (error) {
-                    if(error.status === 401){
-                        localStorage.removeItem("token")
-                    }
-                    console.log(error)
-                }
-            }
-        })()
-    },[token])
+        dispatch(me())
+    },[token, dispatch])
 
     const logOut = () =>{
         localStorage.removeItem("token")
@@ -50,12 +34,12 @@ const Headers = ({token, setToken, tokenLocalStorage}) =>{
             <>
                 {dropDown === false ? 
                 <div className="w-40 h-7 bg-white rounded-md text-lg text-center text-green-600 font-bold cursor-pointer" onClick={()=> comDropDownOn()}>
-                   {me?.data?.display_name}
+                   {user.display_name}
                 </div>
                 :
                 <>
                 <div className="w-40 h-7 bg-white rounded-md rounded-b-none text-lg text-center text-green-600 font-bold cursor-pointer" onClick={()=> comDropDownOff()}>
-                    {me?.data?.display_name}
+                    {user?.display_name}
                 </div>
                 <div className="absolute top-11">
                     <div className="w-40 h-7 bg-white rounded-md rounded-t-none text-base text-center cursor-pointer" onClick={()=> logOut()}>

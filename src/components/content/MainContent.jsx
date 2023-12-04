@@ -1,8 +1,17 @@
 import Headers from "../Header/Headers"
 import ButtonLogin from "../button/ButtonLogin"
+import { me } from "../../redux/Action/authActions"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
 
-const MainContent = ({token, setToken, tokenLocalStorage}) =>{
+const MainContent = ({setToken, tokenLocalStorage}) =>{
+    
+    const {token, user} = useSelector((state) => state.auth)
+    const dispatch = useDispatch()
 
+    useEffect(() => {
+        dispatch(me())
+    },[dispatch])
     return(
         <>
         {!token ? 
@@ -25,6 +34,11 @@ const MainContent = ({token, setToken, tokenLocalStorage}) =>{
         : 
         <div className="bg-zinc-900 row-span-3 col-span-5 rounded-md">
             <Headers token={token} setToken={setToken} tokenLocalStorage={tokenLocalStorage} />
+            <div className="mt-10 ml-10">
+                <p className="text-white text-2xl font-semibold">
+                    Welcome, {user?.display_name}
+                </p>
+            </div>
         </div>
         }
         </>
