@@ -1,7 +1,7 @@
 import React from "react"
-import ContentLeftOne from "../components/content/ContentLeftOne"
-import ContentLeftTwo from "../components/content/ContentLeftTwo"
-import MainContent from "../components/content/MainContent"
+import ContentLeftOne from "../components/Content/ContentLeftOne"
+import ContentLeftTwo from "../components/Content/ContentLeftTwo"
+import MainContent from "../components/Content/MainContent"
 
 const Search = () =>{
 

@@ -1,8 +1,11 @@
 import { useEffect } from "react"
+import { setToken } from "../../redux/Reducers/authMeReducer";
+import { useDispatch } from "react-redux";
 
-const ButtonLogin = ({setToken, tokenLocalStorage}) =>{
+const ButtonLogin = () =>{
     
-
+    let {token} = ((state) => state.auth)
+    const dispatch = useDispatch()
     const getToken = () => {
         let urlParams = new URLSearchParams(window.location.hash.replace("#","?"));
         let token = urlParams.get('access_token'); 
@@ -14,12 +17,12 @@ const ButtonLogin = ({setToken, tokenLocalStorage}) =>{
 
         getToken()
         
-        if(!tokenLocalStorage && hash){
-            tokenLocalStorage = hash.substring(1).split("&").find(element => element.startsWith("access_token")).split("=")[1]
+        if(!token && hash){
+            token = hash.substring(1).split("&").find(element => element.startsWith("access_token")).split("=")[1]
             
             window.location.hash = ""
-            window.localStorage.setItem("token",tokenLocalStorage)
-            setToken(tokenLocalStorage)
+            localStorage.setItem("token",token)
+            dispatch(setToken(token))
         }
     },[])
 

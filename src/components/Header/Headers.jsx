@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import ButtonLogin from "../button/ButtonLogin"
-
+import { setToken } from "../../redux/Reducers/authMeReducer"
 import { useDispatch, useSelector } from "react-redux"
 import { me } from "../../redux/Action/authActions"
 
-const Headers = ({setToken, tokenLocalStorage}) =>{
+const Headers = ({tokenLocalStorage}) =>{
 
     const [dropDown, setDropDown] = useState(false)
     const { token, user } = useSelector((state) => state.auth)
@@ -16,7 +16,7 @@ const Headers = ({setToken, tokenLocalStorage}) =>{
 
     const logOut = () =>{
         localStorage.removeItem("token")
-        setToken('')
+        dispatch(setToken(null))
     }
     
     const comDropDownOn = () => {
@@ -29,12 +29,12 @@ const Headers = ({setToken, tokenLocalStorage}) =>{
     return (
         <div className="mt-2 flex justify-end mx-5">
             {!token ? 
-            <ButtonLogin token={token} setToken={setToken} tokenLocalStorage={tokenLocalStorage} />
+            <ButtonLogin setToken={setToken} tokenLocalStorage={tokenLocalStorage} />
             :
             <>
                 {dropDown === false ? 
                 <div className="w-40 h-7 bg-white rounded-md text-lg text-center text-green-600 font-bold cursor-pointer" onClick={()=> comDropDownOn()}>
-                   {user.display_name}
+                   {user?.display_name}
                 </div>
                 :
                 <>

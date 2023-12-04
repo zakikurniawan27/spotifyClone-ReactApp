@@ -6,12 +6,11 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 
 function App() {
-  const tokenLocalStorage = localStorage.getItem("token")
-  const [token, setToken] = useState(tokenLocalStorage)
+  
   return (
     <Provider store={store}>
       <Routes>
-        <Route path="/" element={<Home token={token} setToken={setToken} tokenLocalStorage={tokenLocalStorage} />}/>
+        <Route path="/" element={<Home  />}/>
         <Route path="/search" element={<Search />}/>
       </Routes>
     </Provider>
