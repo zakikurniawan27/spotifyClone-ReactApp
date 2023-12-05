@@ -5,7 +5,7 @@ const ContentLeftOne = () => {
 
 
     return(
-        <div className="grid grid-rows-2 gap-2 bg-zinc-900 rounded-md">
+        <div className="grid grid-rows-2 h-full bg-zinc-900 rounded-md">
             <ButtonHome />
             <ButtonSearch/>
         </div>
