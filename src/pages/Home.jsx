@@ -10,19 +10,35 @@ const Home = () =>{
     const {token} = useSelector((state) => state.auth)
     return(
         <>
+        {!token ? 
         <div className="bg-black h-screen">
             {!token ? 
             <div className="grid grid-rows-1 px-2 pt-20">
                 <LandingPage />
             </div> 
             :
-            <div className="grid grid-rows-2 grid-flow-col gap-2 px-2 pt-2">
+            <div className="grid grid-rows-6 grid-flow-col auto-cols-auto gap-2 px-2 pt-2">
+                <ContentLeftOne/>
+                <ContentLeftTwo/>
+                <MainContent />
+            </div>
+            }
+        </div> 
+        :
+        <div className="bg-black h-full">
+            {!token ? 
+            <div className="grid grid-rows-1 px-2 pt-20">
+                <LandingPage />
+            </div> 
+            :
+            <div className="grid grid-rows-6 grid-flow-col auto-cols-auto gap-2 px-2 pt-2">
                 <ContentLeftOne/>
                 <ContentLeftTwo/>
                 <MainContent />
             </div>
             }
         </div>
+        }
         </>
     )
 }

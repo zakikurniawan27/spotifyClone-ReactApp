@@ -13,7 +13,7 @@ const playlistSlicer = createSlice({
             state.playlist = actions.payload
         },
         getCurrentLimitPlaylist:(state, actions) => {
-            state.playlist = actions.payload
+            state.limitPlaylist = actions.payload
         }
     }
 })
