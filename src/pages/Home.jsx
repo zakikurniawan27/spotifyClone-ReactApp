@@ -1,9 +1,9 @@
 import React from "react"
-import ContentLeftOne from "../components/Content/ContentLeftOne"
-import ContentLeftTwo from "../components/Content/ContentLeftTwo"
-import MainContent from "../components/Content/MainContent"
 import { useSelector } from "react-redux"
 import LandingPage from "./LandingPage"
+import SectionLeftOne from "../components/Content/SectionLeftOne"
+import SectionMain from "../components/Content/SectionMain"
+import SectionLeftTwo from "../components/Content/SectionLeftTwo"
 
 const Home = () =>{
 
@@ -18,9 +18,9 @@ const Home = () =>{
             </div> 
             :
             <div className="grid grid-rows-6 grid-flow-col auto-cols-auto gap-2 px-2 pt-2">
-                <ContentLeftOne/>
-                <ContentLeftTwo/>
-                <MainContent />
+                <SectionLeftOne/>
+                <SectionLeftTwo/>
+                <SectionMain/>
             </div>
             }
         </div> 
@@ -32,9 +32,9 @@ const Home = () =>{
             </div> 
             :
             <div className="grid grid-rows-6 grid-flow-col auto-cols-auto gap-2 px-2 pt-2">
-                <ContentLeftOne/>
-                <ContentLeftTwo/>
-                <MainContent />
+                <SectionLeftOne/>
+                <SectionLeftTwo/>
+                <SectionMain/>
             </div>
             }
         </div>
