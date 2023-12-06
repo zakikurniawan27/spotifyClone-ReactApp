@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getCurrentLimitPlaylist, getCurrentPlaylist } from "../Reducers/playlistReducer";
+import { getCurrentLimitPlaylist, getCurrentPlaylist, getFeaturedLimitPlaylist } from "../Reducers/playlistReducer";
 
 export const getPlaylist = () => async(dispatch, getState) =>{
     try {
@@ -28,6 +28,22 @@ export const getLimitPlaylist = () => async(dispatch, getState) =>{
             }
         )
         dispatch(getCurrentLimitPlaylist(data))
+    } catch (error) {
+        alert(error.response.data.message)
+    }
+}
+
+export const getFeaturedPlaylistLimit = () => async(dispatch, getState) =>{
+    try {
+        const {token} = getState().auth
+        const {data} = await axios.get(
+            `https://api.spotify.com/v1/browse/featured-playlists?limit=6`,{
+                headers:{
+                    Authorization:`Bearer ${token}`
+                }
+            }
+        )
+        dispatch(getFeaturedLimitPlaylist(data))
     } catch (error) {
         alert(error.response.data.message)
     }

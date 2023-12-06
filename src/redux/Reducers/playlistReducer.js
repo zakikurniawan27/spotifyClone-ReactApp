@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     playlist:null,
-    limitPlaylist:null
+    limitPlaylist:null,
+    featuredPlaylist:null,
 }
 
 const playlistSlicer = createSlice({
@@ -14,9 +15,12 @@ const playlistSlicer = createSlice({
         },
         getCurrentLimitPlaylist:(state, actions) => {
             state.limitPlaylist = actions.payload
+        },
+        getFeaturedLimitPlaylist:(state, actions) =>{
+            state.featuredPlaylist = actions.payload
         }
     }
 })
 
-export const {getCurrentPlaylist, getCurrentLimitPlaylist} = playlistSlicer.actions
+export const {getCurrentPlaylist, getCurrentLimitPlaylist, getFeaturedLimitPlaylist} = playlistSlicer.actions
 export default playlistSlicer.reducer

@@ -5,7 +5,7 @@ export const getAlbumNew = () => async(dispatch, getState) =>{
     try {
         const {token} = getState().auth
         const {data} = await axios.get(
-            `https://api.spotify.com/v1/browse/new-releases?limit=5`,{
+            `https://api.spotify.com/v1/browse/new-releases?limit=6`,{
                 headers:{
                     Authorization:`Bearer ${token}`
                 }
