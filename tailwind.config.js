@@ -12,6 +12,14 @@ module.exports = {
       },
       gridAutoRows:{
         '1.5':'repeat(2, minmax(0, 0.5fr))',
+      },
+      gridTemplateRows:{
+        '9':'repeat(9, minmax(0, 0.5fr))'
+      },
+      gridRow:{
+        'span-7': 'span 7 / span 7',
+        'span-8': 'span 8 / span 8',
+        'span-9': 'span 9 / span 9'
       }
     },
   },

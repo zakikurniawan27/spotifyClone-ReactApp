@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    playlist:null,
+    allPlaylist:null,
     limitPlaylist:null,
     featuredPlaylist:null,
     detailPlaylist:null
@@ -12,7 +12,7 @@ const playlistSlicer = createSlice({
     initialState,
     reducers:{
         getCurrentPlaylist: (state, actions) => {
-            state.playlist = actions.payload
+            state.allPlaylist = actions.payload
         },
         getCurrentLimitPlaylist:(state, actions) => {
             state.limitPlaylist = actions.payload

@@ -6,7 +6,7 @@ import { getFeaturedPlaylistLimit,  getLimitPlaylist } from "../../redux/Action/
 import { getAlbumNew } from "../../redux/Action/albumActions"
 import { getCategoris } from "../../redux/Action/categoriActions"
 
-const SectionMain = () =>{
+const MainContent = () =>{
     
     const {user} = useSelector((state) => state.auth)
     const {limitPlaylist} = useSelector((state) => state.playlist)
@@ -25,14 +25,14 @@ const SectionMain = () =>{
 
     return(
         <>
-        <div className="bg-zinc-900 row-span-5 col-span-3 rounded-md">
+        <div className="bg-zinc-900 row-span-9 col-span-3 rounded-md">
             <Headers />
             <div className="mt-10 ml-10">
                 <p className="text-white text-2xl font-semibold">
                     Selamat Datang, {user?.display_name}
                 </p>
             </div>
-            <div className="grid grid-cols-2.5 gap-2 gap-x-0 place-items-center mt-5 text-white mb-1">
+            <div className="grid grid-cols-2.5 gap-2 place-items-center mt-5 text-white mb-1">
                 {limitPlaylist?.items?.map((item, index) => (
                     <div className="bg-zinc-800 rounded-md w-[340px] h-full cursor-pointer hover:bg-zinc-700">
                         <div className="grid grid-cols-1.7" key={index}>
@@ -82,7 +82,7 @@ const SectionMain = () =>{
             <div className="grid grid-cols-6 place-items-center mt-5 text-white mb-2">
                 {categoris?.categories?.items?.map((item, ind) =>(
                     <div className="w-36 h-56 bg-zinc-800 rounded-md shadow-black shadow-md hover:bg-zinc-700 cursor-pointer">
-                        <article className="ml-[7px] mt-2">
+                        <article className="ml-[7px] mt-2" key={ind}>
                             <img src={item.icons[0].url} alt="icons categoris" width={130} />
                             <p className="text-base font-semibold">{item.name}</p>
                         </article>
@@ -94,4 +94,4 @@ const SectionMain = () =>{
     )
 }
 
-export default SectionMain
+export default MainContent

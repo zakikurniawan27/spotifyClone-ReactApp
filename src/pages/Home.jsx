@@ -1,9 +1,9 @@
 import React from "react"
 import { useSelector } from "react-redux"
 import LandingPage from "./LandingPage"
-import SectionLeftOne from "../components/Content/SectionLeftOne"
-import SectionMain from "../components/Content/SectionMain"
-import SectionLeftTwo from "../components/Content/SectionLeftTwo"
+import ContentHome from "../components/Section/ContentHome"
+import ContentCollect from "../components/Section/ContentCollect"
+import MainContent from "../components/Section/MainContent"
 
 const Home = () =>{
 
@@ -12,31 +12,17 @@ const Home = () =>{
         <>
         {!token ? 
         <div className="bg-black h-screen">
-            {!token ? 
             <div className="grid grid-rows-1 px-2 pt-20">
                 <LandingPage />
             </div> 
-            :
-            <div className="grid grid-rows-6 grid-flow-col auto-cols-auto gap-2 px-2 pt-2">
-                <SectionLeftOne/>
-                <SectionLeftTwo/>
-                <SectionMain/>
-            </div>
-            }
         </div> 
         :
         <div className="bg-black h-full">
-            {!token ? 
-            <div className="grid grid-rows-1 px-2 pt-20">
-                <LandingPage />
-            </div> 
-            :
-            <div className="grid grid-rows-6 grid-flow-col auto-cols-auto gap-2 px-2 pt-2">
-                <SectionLeftOne/>
-                <SectionLeftTwo/>
-                <SectionMain/>
+            <div className="grid grid-rows-9 grid-flow-col gap-2 px-2 pt-2">
+                <ContentHome />
+                <ContentCollect/>
+                <MainContent/>
             </div>
-            }
         </div>
         }
         </>

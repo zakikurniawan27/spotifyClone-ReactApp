@@ -5,7 +5,7 @@ export const getPlaylist = () => async(dispatch, getState) =>{
     try {
         const {token} = getState().auth
         const {data} = await axios.get(
-            `https://api.spotify.com/v1/me/playlists`,{
+            `https://api.spotify.com/v1/me/playlists?offset=0&limit=20`,{
                 headers:{
                     Authorization: `Bearer ${token}`
                 },

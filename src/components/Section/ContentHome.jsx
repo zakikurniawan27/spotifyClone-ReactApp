@@ -1,8 +1,9 @@
 import ButtonHome from '../button/buttonHome'
 import ButtonSearch from "../button/buttonSearch"
 
-const SectionLeftOne = () => {
+const ContentHome = () => {
 
+    
 
     return(
         <div className="grid grid-rows-2 h-full bg-zinc-900 rounded-md">
@@ -13,4 +14,4 @@ const SectionLeftOne = () => {
 
 }
 
-export default SectionLeftOne
+export default ContentHome

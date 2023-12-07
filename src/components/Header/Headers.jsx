@@ -33,12 +33,12 @@ const Headers = ({tokenLocalStorage}) =>{
             :
             <>
                 {dropDown === false ? 
-                <div className="w-40 h-7 bg-white rounded-md text-lg text-center text-green-600 font-bold cursor-pointer" onClick={()=> comDropDownOn()}>
+                <div className="w-40 h-7 bg-white rounded-md text-lg text-center text-slate-800 font-bold cursor-pointer" onClick={()=> comDropDownOn()}>
                    {user?.display_name}
                 </div>
                 :
                 <>
-                <div className="w-40 h-7 bg-white rounded-md rounded-b-none text-lg text-center text-green-600 font-bold cursor-pointer" onClick={()=> comDropDownOff()}>
+                <div className="w-40 h-7 bg-white rounded-md rounded-b-none text-lg text-center text-slate-800 font-bold cursor-pointer" onClick={()=> comDropDownOff()}>
                     {user?.display_name}
                 </div>
                 <div className="absolute top-11">
